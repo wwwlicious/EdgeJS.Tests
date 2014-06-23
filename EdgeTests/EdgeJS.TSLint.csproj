@@ -655,9 +655,6 @@
     <Content Include="Scripts\bootstrap.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\bootstrap.min.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Scripts\jquery-1.10.2.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

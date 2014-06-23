@@ -23,18 +23,17 @@
         public static async Task<TsLintResult> Execute(string fileName)
         {
             Console.WriteLine("Linting {0} on thread {1}", Path.GetFileName(fileName), Thread.CurrentThread.ManagedThreadId);
-            var stopwatch = new Stopwatch();
             
             // gets the file and passes to nodejs, waits for result then returns
             var contents = File.ReadAllText(fileName);
 
             // time and run
-            stopwatch.Start();
             var task = await loader.Execute(new { fileName, contents });
-            stopwatch.Stop();
 
-            Console.WriteLine("Linted {0} on thread {1} in {2} seconds", Path.GetFileName(fileName), Thread.CurrentThread.ManagedThreadId, stopwatch.Elapsed.TotalSeconds);
-
+            var original = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Linted {0} on thread {1}", Path.GetFileName(fileName), Thread.CurrentThread.ManagedThreadId);
+            Console.ForegroundColor = original;
             return new TsLintResult(task);
         }
 
